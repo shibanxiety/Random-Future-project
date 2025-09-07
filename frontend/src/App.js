@@ -7,21 +7,31 @@ const API = `${BACKEND_URL}/api`;
 
 // Components
 const SearchBar = ({ onSearch, searchQuery, setSearchQuery }) => (
-  <div className="relative w-full max-w-4xl mx-auto">
-    <div className="flex items-center bg-white rounded-2xl shadow-lg border-2 border-gray-100 overflow-hidden">
+  <div className="relative w-full max-w-5xl mx-auto">
+    <div className="flex items-center bg-white rounded-3xl shadow-2xl border border-gray-200 overflow-hidden backdrop-blur-sm">
+      <div className="pl-6 text-gray-400">
+        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+        </svg>
+      </div>
       <input
         type="text"
         placeholder="Search hospitals, treatments, doctors, or locations..."
         value={searchQuery}
         onChange={(e) => setSearchQuery(e.target.value)}
-        className="flex-1 px-6 py-4 text-lg focus:outline-none"
+        className="flex-1 px-4 py-5 text-lg focus:outline-none placeholder-gray-400"
         onKeyPress={(e) => e.key === 'Enter' && onSearch()}
       />
       <button
         onClick={onSearch}
-        className="bg-blue-600 hover:bg-blue-700 px-8 py-4 text-white font-semibold transition-colors"
+        className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 px-10 py-5 text-white font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg"
       >
-        🔍 Search
+        <span className="flex items-center space-x-2">
+          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+          </svg>
+          <span>Search</span>
+        </span>
       </button>
     </div>
   </div>
