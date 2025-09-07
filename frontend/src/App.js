@@ -38,61 +38,87 @@ const SearchBar = ({ onSearch, searchQuery, setSearchQuery }) => (
 );
 
 const FilterPanel = ({ filters, setFilters, onApplyFilters }) => (
-  <div className="bg-white rounded-xl shadow-md p-6 mb-6">
-    <h3 className="text-lg font-semibold text-gray-800 mb-4">Filters</h3>
-    <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
-      <select
-        value={filters.location}
-        onChange={(e) => setFilters({...filters, location: e.target.value})}
-        className="px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-      >
-        <option value="">All Locations</option>
-        <option value="Chennai">Chennai, India</option>
-        <option value="Bangkok">Bangkok, Thailand</option>
-        <option value="Istanbul">Istanbul, Turkey</option>
-      </select>
+  <div className="bg-white rounded-2xl shadow-xl border border-gray-100 p-8 mb-8">
+    <div className="flex items-center mb-6">
+      <div className="w-8 h-8 bg-gradient-to-r from-blue-500 to-indigo-500 rounded-lg flex items-center justify-center mr-3">
+        <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 100 4m0-4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 100 4m0-4v2m0-6V4" />
+        </svg>
+      </div>
+      <h3 className="text-xl font-bold text-gray-800">Advanced Filters</h3>
+    </div>
+    <div className="grid grid-cols-1 md:grid-cols-5 gap-6">
+      <div className="space-y-2">
+        <label className="text-sm font-medium text-gray-700">Location</label>
+        <select
+          value={filters.location}
+          onChange={(e) => setFilters({...filters, location: e.target.value})}
+          className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+        >
+          <option value="">All Locations</option>
+          <option value="Chennai">Chennai, India</option>
+          <option value="Bangkok">Bangkok, Thailand</option>
+          <option value="Istanbul">Istanbul, Turkey</option>
+        </select>
+      </div>
       
-      <select
-        value={filters.specialty}
-        onChange={(e) => setFilters({...filters, specialty: e.target.value})}
-        className="px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-      >
-        <option value="">All Specialties</option>
-        <option value="Cardiology">Cardiology</option>
-        <option value="Orthopedics">Orthopedics</option>
-        <option value="Cosmetic Surgery">Cosmetic Surgery</option>
-        <option value="IVF">IVF</option>
-        <option value="Hair Transplant">Hair Transplant</option>
-      </select>
+      <div className="space-y-2">
+        <label className="text-sm font-medium text-gray-700">Specialty</label>
+        <select
+          value={filters.specialty}
+          onChange={(e) => setFilters({...filters, specialty: e.target.value})}
+          className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+        >
+          <option value="">All Specialties</option>
+          <option value="Cardiology">Cardiology</option>
+          <option value="Orthopedics">Orthopedics</option>
+          <option value="Cosmetic Surgery">Cosmetic Surgery</option>
+          <option value="IVF">IVF</option>
+          <option value="Hair Transplant">Hair Transplant</option>
+        </select>
+      </div>
       
-      <select
-        value={filters.accreditation}
-        onChange={(e) => setFilters({...filters, accreditation: e.target.value})}
-        className="px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-      >
-        <option value="">All Accreditations</option>
-        <option value="JCI">JCI</option>
-        <option value="NABH">NABH</option>
-        <option value="ISO">ISO</option>
-      </select>
+      <div className="space-y-2">
+        <label className="text-sm font-medium text-gray-700">Accreditation</label>
+        <select
+          value={filters.accreditation}
+          onChange={(e) => setFilters({...filters, accreditation: e.target.value})}
+          className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+        >
+          <option value="">All Accreditations</option>
+          <option value="JCI">JCI</option>
+          <option value="NABH">NABH</option>
+          <option value="ISO">ISO</option>
+        </select>
+      </div>
       
-      <select
-        value={filters.rating_min}
-        onChange={(e) => setFilters({...filters, rating_min: e.target.value})}
-        className="px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-      >
-        <option value="">Any Rating</option>
-        <option value="4.5">4.5+ Stars</option>
-        <option value="4.0">4.0+ Stars</option>
-        <option value="3.5">3.5+ Stars</option>
-      </select>
+      <div className="space-y-2">
+        <label className="text-sm font-medium text-gray-700">Minimum Rating</label>
+        <select
+          value={filters.rating_min}
+          onChange={(e) => setFilters({...filters, rating_min: e.target.value})}
+          className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+        >
+          <option value="">Any Rating</option>
+          <option value="4.5">4.5+ Stars</option>
+          <option value="4.0">4.0+ Stars</option>
+          <option value="3.5">3.5+ Stars</option>
+        </select>
+      </div>
       
-      <button
-        onClick={onApplyFilters}
-        className="bg-green-600 hover:bg-green-700 text-white px-6 py-2 rounded-lg font-medium transition-colors"
-      >
-        Apply Filters
-      </button>
+      <div className="flex items-end">
+        <button
+          onClick={onApplyFilters}
+          className="w-full bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-600 hover:to-teal-600 text-white px-6 py-3 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg"
+        >
+          <span className="flex items-center justify-center space-x-2">
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.207A1 1 0 013 6.5V4z" />
+            </svg>
+            <span>Apply Filters</span>
+          </span>
+        </button>
+      </div>
     </div>
   </div>
 );
