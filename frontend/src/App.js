@@ -124,59 +124,87 @@ const FilterPanel = ({ filters, setFilters, onApplyFilters }) => (
 );
 
 const HospitalCard = ({ hospital, onViewDetails, onCreatePackage }) => (
-  <div className="bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden">
-    <div className="relative">
+  <div className="bg-white rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-500 overflow-hidden group transform hover:-translate-y-2 border border-gray-100">
+    <div className="relative overflow-hidden">
       <img
         src={hospital.photos[0]}
         alt={hospital.name}
-        className="w-full h-48 object-cover"
+        className="w-full h-56 object-cover transition-transform duration-700 group-hover:scale-110"
       />
-      <div className="absolute top-4 right-4 bg-green-600 text-white px-3 py-1 rounded-full text-sm font-medium">
-        ⭐ {hospital.rating} ({hospital.reviews_count})
+      <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+      <div className="absolute top-4 right-4 bg-gradient-to-r from-emerald-500 to-teal-500 text-white px-4 py-2 rounded-full text-sm font-bold shadow-lg backdrop-blur-sm">
+        <span className="flex items-center space-x-1">
+          <svg className="w-4 h-4 fill-current" viewBox="0 0 20 20">
+            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+          </svg>
+          <span>{hospital.rating}</span>
+        </span>
+      </div>
+      <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-sm text-gray-800 px-3 py-1 rounded-full text-sm font-medium">
+        {hospital.reviews_count} reviews
       </div>
     </div>
     
-    <div className="p-6">
-      <h3 className="text-xl font-bold text-gray-800 mb-2">{hospital.name}</h3>
-      <p className="text-gray-600 mb-3">
-        📍 {hospital.location.city}, {hospital.location.country}
+    <div className="p-8">
+      <div className="flex items-start justify-between mb-4">
+        <h3 className="text-2xl font-bold text-gray-800 group-hover:text-blue-600 transition-colors duration-300">
+          {hospital.name}
+        </h3>
+        <div className="flex space-x-1">
+          {hospital.accreditations.slice(0, 2).map((acc, idx) => (
+            <span key={idx} className="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full font-medium">
+              {acc}
+            </span>
+          ))}
+        </div>
+      </div>
+      
+      <p className="text-gray-600 mb-4 flex items-center">
+        <svg className="w-5 h-5 mr-2 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+        </svg>
+        {hospital.location.city}, {hospital.location.country}
       </p>
       
-      <div className="mb-4">
-        <p className="text-sm text-gray-500 mb-2">Specialties:</p>
-        <div className="flex flex-wrap gap-1">
+      <div className="mb-6">
+        <p className="text-sm font-medium text-gray-700 mb-3">Top Specialties:</p>
+        <div className="flex flex-wrap gap-2">
           {hospital.specialties.slice(0, 3).map((specialty, idx) => (
-            <span key={idx} className="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full">
+            <span key={idx} className="bg-gradient-to-r from-indigo-50 to-blue-50 text-indigo-700 text-sm px-3 py-2 rounded-xl font-medium border border-indigo-100">
               {specialty}
             </span>
           ))}
           {hospital.specialties.length > 3 && (
-            <span className="bg-gray-100 text-gray-600 text-xs px-2 py-1 rounded-full">
+            <span className="bg-gray-50 text-gray-600 text-sm px-3 py-2 rounded-xl font-medium border border-gray-200">
               +{hospital.specialties.length - 3} more
             </span>
           )}
         </div>
       </div>
       
-      <div className="mb-4">
-        <p className="text-sm text-gray-500 mb-1">Popular Procedures:</p>
-        {hospital.procedures.slice(0, 2).map((proc, idx) => (
-          <p key={idx} className="text-sm text-gray-700">
-            • {proc.name}: {proc.price_range}
-          </p>
-        ))}
+      <div className="mb-6">
+        <p className="text-sm font-medium text-gray-700 mb-3">Popular Procedures:</p>
+        <div className="space-y-2">
+          {hospital.procedures.slice(0, 2).map((proc, idx) => (
+            <div key={idx} className="flex justify-between items-center p-3 bg-gray-50 rounded-xl">
+              <span className="text-gray-700 font-medium">{proc.name}</span>
+              <span className="text-emerald-600 font-bold">{proc.price_range}</span>
+            </div>
+          ))}
+        </div>
       </div>
       
-      <div className="flex gap-3">
+      <div className="flex gap-4">
         <button
           onClick={() => onViewDetails(hospital)}
-          className="flex-1 bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-lg font-medium transition-colors"
+          className="flex-1 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white py-3 px-6 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg"
         >
           View Details
         </button>
         <button
           onClick={() => onCreatePackage(hospital)}
-          className="flex-1 bg-green-600 hover:bg-green-700 text-white py-2 px-4 rounded-lg font-medium transition-colors"
+          className="flex-1 bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-600 hover:to-teal-600 text-white py-3 px-6 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg"
         >
           Create Package
         </button>
