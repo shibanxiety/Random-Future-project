@@ -759,62 +759,108 @@ function App() {
 
       <main className="max-w-7xl mx-auto px-4 py-8">
         {currentView === 'search' && (
-          <div>
-            {/* Hero Section */}
-            <div className="text-center mb-12">
-              <h2 className="text-4xl md:text-6xl font-bold text-gray-800 mb-4">
-                Find World-Class <br />
-                <span className="text-blue-600">Healthcare</span> Anywhere
-              </h2>
-              <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
-                Discover top hospitals and medical professionals worldwide. Plan your medical journey with transparent pricing and comprehensive packages.
-              </p>
-              
-              <SearchBar 
-                onSearch={handleSearch}
-                searchQuery={searchQuery}
-                setSearchQuery={setSearchQuery}
-              />
+          <div className="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 relative overflow-hidden">
+            {/* Background Elements */}
+            <div className="absolute inset-0 overflow-hidden">
+              <div className="absolute -top-40 -right-40 w-80 h-80 bg-gradient-to-br from-blue-400/20 to-indigo-500/20 rounded-full blur-3xl"></div>
+              <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-gradient-to-tr from-purple-400/20 to-pink-500/20 rounded-full blur-3xl"></div>
             </div>
-
-            {/* Popular Locations */}
-            <div className="mb-12">
-              <h3 className="text-2xl font-bold text-gray-800 mb-6 text-center">Popular Destinations</h3>
-              <div className="flex flex-wrap justify-center gap-4">
-                {popularLocations.map((location, idx) => (
-                  <button
-                    key={idx}
-                    onClick={() => {
-                      setSearchQuery(`${location.city}, ${location.country}`);
-                      handleSearch();
-                    }}
-                    className="bg-white hover:bg-blue-50 border border-gray-200 hover:border-blue-300 rounded-lg px-6 py-4 text-center transition-colors"
-                  >
-                    <div className="text-3xl mb-2">{location.flag}</div>
-                    <div className="font-semibold text-gray-800">{location.city}</div>
-                    <div className="text-sm text-gray-600">{location.country}</div>
-                  </button>
-                ))}
+            
+            <div className="relative z-10 pt-20 pb-32">
+              {/* Hero Section */}
+              <div className="text-center mb-16">
+                <div className="max-w-5xl mx-auto px-6">
+                  <div className="inline-block mb-6">
+                    <span className="bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-6 py-2 rounded-full text-sm font-semibold shadow-lg">
+                      🌟 World's Most Trusted Medical Tourism Platform
+                    </span>
+                  </div>
+                  <h2 className="text-5xl md:text-7xl font-bold text-gray-800 mb-6 leading-tight">
+                    Find World-Class <br />
+                    <span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 bg-clip-text text-transparent">
+                      Healthcare
+                    </span> Anywhere
+                  </h2>
+                  <p className="text-xl md:text-2xl text-gray-600 mb-12 max-w-4xl mx-auto leading-relaxed">
+                    Discover top hospitals and medical professionals worldwide. Plan your medical journey with 
+                    <span className="font-semibold text-indigo-600"> transparent pricing</span> and 
+                    <span className="font-semibold text-indigo-600"> comprehensive packages</span>.
+                  </p>
+                  
+                  <SearchBar 
+                    onSearch={handleSearch}
+                    searchQuery={searchQuery}
+                    setSearchQuery={setSearchQuery}
+                  />
+                  
+                  <div className="mt-8 flex justify-center space-x-8 text-sm text-gray-500">
+                    <span className="flex items-center">
+                      <svg className="w-5 h-5 mr-2 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                      </svg>
+                      JCI Accredited Hospitals
+                    </span>
+                    <span className="flex items-center">
+                      <svg className="w-5 h-5 mr-2 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                      </svg>
+                      Transparent Pricing
+                    </span>
+                    <span className="flex items-center">
+                      <svg className="w-5 h-5 mr-2 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                      </svg>
+                      Complete Care Packages
+                    </span>
+                  </div>
+                </div>
               </div>
-            </div>
 
-            {/* Popular Specialties */}
-            <div className="mb-12">
-              <h3 className="text-2xl font-bold text-gray-800 mb-6 text-center">Popular Treatments</h3>
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                {popularSpecialties.map((specialty, idx) => (
-                  <button
-                    key={idx}
-                    onClick={() => {
-                      setSearchQuery(specialty.name);
-                      handleSearch();
-                    }}
-                    className="bg-white hover:bg-blue-50 border border-gray-200 hover:border-blue-300 rounded-lg p-6 text-center transition-colors"
-                  >
-                    <div className="text-4xl mb-3">{specialty.icon}</div>
-                    <div className="font-semibold text-gray-800">{specialty.name}</div>
-                  </button>
-                ))}
+              {/* Popular Destinations */}
+              <div className="mb-20 px-6">
+                <div className="max-w-7xl mx-auto">
+                  <h3 className="text-4xl font-bold text-gray-800 mb-4 text-center">Popular Destinations</h3>
+                  <p className="text-gray-600 text-center mb-12 text-lg">Discover world-class healthcare in these medical tourism hotspots</p>
+                  <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+                    {popularLocations.map((location, idx) => (
+                      <button
+                        key={idx}
+                        onClick={() => {
+                          setSearchQuery(`${location.city}, ${location.country}`);
+                          handleSearch();
+                        }}
+                        className="group bg-white hover:bg-gradient-to-br hover:from-blue-50 hover:to-indigo-50 border border-gray-200 hover:border-blue-300 rounded-2xl p-8 text-center transition-all duration-500 transform hover:scale-105 hover:shadow-xl"
+                      >
+                        <div className="text-5xl mb-4 transform group-hover:scale-110 transition-transform duration-300">{location.flag}</div>
+                        <div className="font-bold text-gray-800 text-lg group-hover:text-blue-600 transition-colors">{location.city}</div>
+                        <div className="text-gray-500 group-hover:text-blue-500 transition-colors">{location.country}</div>
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              </div>
+
+              {/* Popular Specialties */}
+              <div className="px-6">
+                <div className="max-w-7xl mx-auto">
+                  <h3 className="text-4xl font-bold text-gray-800 mb-4 text-center">Popular Treatments</h3>
+                  <p className="text-gray-600 text-center mb-12 text-lg">Find specialized medical care for your specific needs</p>
+                  <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+                    {popularSpecialties.map((specialty, idx) => (
+                      <button
+                        key={idx}
+                        onClick={() => {
+                          setSearchQuery(specialty.name);
+                          handleSearch();
+                        }}
+                        className="group bg-white hover:bg-gradient-to-br hover:from-indigo-50 hover:to-purple-50 border border-gray-200 hover:border-indigo-300 rounded-2xl p-8 text-center transition-all duration-500 transform hover:scale-105 hover:shadow-xl"
+                      >
+                        <div className="text-6xl mb-4 transform group-hover:scale-110 transition-transform duration-300">{specialty.icon}</div>
+                        <div className="font-bold text-gray-800 text-lg group-hover:text-indigo-600 transition-colors">{specialty.name}</div>
+                      </button>
+                    ))}
+                  </div>
+                </div>
               </div>
             </div>
           </div>
