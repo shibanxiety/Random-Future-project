@@ -759,11 +759,11 @@ function App() {
 
       <main className="max-w-7xl mx-auto px-4 py-8">
         {currentView === 'search' && (
-          <div className="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 relative overflow-hidden">
+          <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 relative overflow-hidden">
             {/* Background Elements */}
             <div className="absolute inset-0 overflow-hidden">
-              <div className="absolute -top-40 -right-40 w-80 h-80 bg-gradient-to-br from-blue-400/20 to-indigo-500/20 rounded-full blur-3xl"></div>
-              <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-gradient-to-tr from-purple-400/20 to-pink-500/20 rounded-full blur-3xl"></div>
+              <div className="absolute -top-40 -right-40 w-80 h-80 bg-gradient-to-br from-blue-400/10 to-indigo-500/10 rounded-full blur-3xl"></div>
+              <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-gradient-to-tr from-purple-400/10 to-pink-500/10 rounded-full blur-3xl"></div>
             </div>
             
             <div className="relative z-10 pt-20 pb-32">
@@ -793,7 +793,7 @@ function App() {
                     setSearchQuery={setSearchQuery}
                   />
                   
-                  <div className="mt-8 flex justify-center space-x-8 text-sm text-gray-500">
+                  <div className="mt-8 flex justify-center space-x-8 text-sm text-gray-600">
                     <span className="flex items-center">
                       <svg className="w-5 h-5 mr-2 text-green-500" fill="currentColor" viewBox="0 0 20 20">
                         <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
@@ -819,8 +819,8 @@ function App() {
               {/* Popular Destinations */}
               <div className="mb-20 px-6">
                 <div className="max-w-7xl mx-auto">
-                  <h3 className="text-4xl font-bold text-gray-800 mb-4 text-center">Popular Destinations</h3>
-                  <p className="text-gray-600 text-center mb-12 text-lg">Discover world-class healthcare in these medical tourism hotspots</p>
+                  <h3 className="text-4xl font-bold text-gray-900 mb-4 text-center">Popular Destinations</h3>
+                  <p className="text-gray-700 text-center mb-12 text-lg">Discover world-class healthcare in these medical tourism hotspots</p>
                   <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
                     {popularLocations.map((location, idx) => (
                       <button
@@ -843,8 +843,8 @@ function App() {
               {/* Popular Specialties */}
               <div className="px-6">
                 <div className="max-w-7xl mx-auto">
-                  <h3 className="text-4xl font-bold text-gray-800 mb-4 text-center">Popular Treatments</h3>
-                  <p className="text-gray-600 text-center mb-12 text-lg">Find specialized medical care for your specific needs</p>
+                  <h3 className="text-4xl font-bold text-gray-900 mb-4 text-center">Popular Treatments</h3>
+                  <p className="text-gray-700 text-center mb-12 text-lg">Find specialized medical care for your specific needs</p>
                   <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
                     {popularSpecialties.map((specialty, idx) => (
                       <button
