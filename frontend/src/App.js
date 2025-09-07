@@ -775,16 +775,16 @@ function App() {
                       🌟 World's Most Trusted Medical Tourism Platform
                     </span>
                   </div>
-                  <h2 className="text-5xl md:text-7xl font-bold text-gray-800 mb-6 leading-tight">
-                    Find World-Class <br />
+                  <h2 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
+                    <span className="text-gray-900">Find World-Class</span> <br />
                     <span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 bg-clip-text text-transparent">
                       Healthcare
-                    </span> Anywhere
+                    </span> <span className="text-gray-900">Anywhere</span>
                   </h2>
-                  <p className="text-xl md:text-2xl text-gray-600 mb-12 max-w-4xl mx-auto leading-relaxed">
+                  <p className="text-xl md:text-2xl text-gray-700 mb-12 max-w-4xl mx-auto leading-relaxed font-medium">
                     Discover top hospitals and medical professionals worldwide. Plan your medical journey with 
-                    <span className="font-semibold text-indigo-600"> transparent pricing</span> and 
-                    <span className="font-semibold text-indigo-600"> comprehensive packages</span>.
+                    <span className="font-bold text-indigo-700"> transparent pricing</span> and 
+                    <span className="font-bold text-indigo-700"> comprehensive packages</span>.
                   </p>
                   
                   <SearchBar 
