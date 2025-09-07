@@ -734,16 +734,24 @@ function App() {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
-      <header className="bg-white shadow-sm border-b">
-        <div className="max-w-7xl mx-auto px-4 py-4">
+      <header className="bg-white shadow-sm border-b backdrop-blur-md bg-white/95 sticky top-0 z-50">
+        <div className="max-w-7xl mx-auto px-6 py-6">
           <div className="flex items-center justify-between">
-            <h1 className="text-2xl font-bold text-blue-600 cursor-pointer" onClick={() => setCurrentView('search')}>
-              🏥 YourCareTrip
+            <h1 className="text-3xl font-bold bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 bg-clip-text text-transparent cursor-pointer flex items-center space-x-3" onClick={() => setCurrentView('search')}>
+              <div className="w-10 h-10 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-xl flex items-center justify-center">
+                <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                </svg>
+              </div>
+              <span>YourCareTrip</span>
             </h1>
-            <nav className="flex space-x-6">
-              <button className="text-gray-600 hover:text-blue-600 font-medium">Find Hospitals</button>
-              <button className="text-gray-600 hover:text-blue-600 font-medium">My Packages</button>
-              <button className="text-gray-600 hover:text-blue-600 font-medium">About</button>
+            <nav className="flex space-x-8">
+              <button className="text-gray-600 hover:text-blue-600 font-medium transition-colors duration-300 hover:scale-105 transform">Find Hospitals</button>
+              <button className="text-gray-600 hover:text-blue-600 font-medium transition-colors duration-300 hover:scale-105 transform">My Packages</button>
+              <button className="text-gray-600 hover:text-blue-600 font-medium transition-colors duration-300 hover:scale-105 transform">About</button>
+              <button className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white px-6 py-2 rounded-xl font-medium transition-all duration-300 transform hover:scale-105 shadow-lg">
+                Sign In
+              </button>
             </nav>
           </div>
         </div>
